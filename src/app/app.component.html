@@ -1,0 +1,16 @@
+<app-header (selectedFeature)="onNavigate($event)"></app-header>
+<!-- uwill not need the onNaviagte method in the ts of this file if u use the below way -->
+<!-- <app-header (selectedFeature)="navigatingFeature =$event"></app-header> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-recipes *ngIf="navigatingFeature ==='recipe'"></app-recipes>
+      <app-shopping-list *ngIf="navigatingFeature !== 'recipe'"></app-shopping-list>
+    </div>
+  </div>
+</div>
+
+
+
+
+<router-outlet></router-outlet>
