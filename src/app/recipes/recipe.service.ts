@@ -1,7 +1,9 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
+@Injectable()
 export class RecipeService
 {
     selectedRecipe = new EventEmitter<Recipe>();
@@ -31,6 +33,12 @@ export class RecipeService
     getRecipes()
     {
         return this.recipes.slice(); //array are object type references in js provides a new array which will be a copy (js)
+    }
+
+    constructor(private shoppingListService:ShoppingListService){}
+    addToShoppingList(ingredients:Ingredient[])
+    {
+        this.shoppingListService.addIngredients(ingredients);
     }
     
 }
