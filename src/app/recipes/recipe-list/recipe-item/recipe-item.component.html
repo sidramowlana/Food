@@ -1,16 +1,19 @@
 <a 
-href="#" 
-class="list-group-item clearfix"
-(click)= "onSelect()">
-    <div class="pull-left">
-        <h4 class="list-group-item-heading">{{recipeElement.name}}</h4>
-        <p class="list-group-item-text">{{recipeElement.description}}</p>
-    </div>
-    <span class="pull-right">
-        <img                     
-            [src]="recipeElement.imagePath"
-            alt="{{recipeElement.name}}" 
-            class="img-responsive" 
-            style="max-height: 50px;">
-    </span>               
+    style = "cursor: pointer" 
+    class="list-group-item clearfix"
+    [routerLink]="[index]"
+    routerLinkActive="active">
+<!-- (click)= "onSelect()"> -->
+        <div class="pull-left">
+            <h4 class="list-group-item-heading">{{recipeElement.name}}</h4>
+            <p class="list-group-item-text">{{recipeElement.description}}</p>
+        </div>
+        <span class="pull-right">
+            <img                     
+                [src]="recipeElement.imagePath"
+                alt="{{recipeElement.name}}" 
+                class="img-responsive" 
+                style="max-height: 50px;">
+        </span>               
 </a>   
+<!-- Single recipe item -->

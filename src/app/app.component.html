@@ -4,8 +4,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf="selectedNaviagtion === 'recipe'" ></app-recipes>
-      <app-shopping-list *ngIf= "selectedNaviagtion !== 'recipe'"></app-shopping-list>
+      <!-- <app-recipes *ngIf="selectedNaviagtion === 'recipe'" ></app-recipes>
+      <app-shopping-list *ngIf= "selectedNaviagtion !== 'recipe'"></app-shopping-list> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
@@ -13,4 +14,3 @@
 
 
 
-<router-outlet></router-outlet>

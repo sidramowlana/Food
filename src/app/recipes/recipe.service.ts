@@ -36,9 +36,15 @@ export class RecipeService
     }
 
     constructor(private shoppingListService:ShoppingListService){}
+
     addToShoppingList(ingredients:Ingredient[])
     {
         this.shoppingListService.addIngredients(ingredients);
+    }
+
+    getRecipe(index:number)
+    {
+        return this.recipes[index];
     }
     
 }

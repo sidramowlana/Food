@@ -4,6 +4,7 @@ import { EventEmitter } from '@angular/core';
 export class ShoppingListService{
 
   updateIngredients = new EventEmitter<Ingredient[]>(); 
+  
     private ingredients: Ingredient[] = [
         new Ingredient('chocolate', 2),
         new Ingredient('apples',10),
@@ -38,7 +39,7 @@ export class ShoppingListService{
 
         // Solution 2 
         //can push the ingredients as a list of single ingredient
-        //inside the ingredients array the elements of Ingredient[] is pushed as single array lik a single element.
+        //inside the ingredients array the elements of Ingredient[] is pushed as single array lik a single element. 
         this.ingredients.push(...ingredient);
         this.updateIngredients.emit(this.ingredients.slice());
       }
