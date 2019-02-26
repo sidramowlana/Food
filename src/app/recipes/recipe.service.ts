@@ -6,7 +6,7 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 @Injectable()
 export class RecipeService
 {
-    selectedRecipe = new EventEmitter<Recipe>();
+    // selectedRecipe = new EventEmitter<Recipe>();
     private recipes:Recipe[]=[
         new Recipe("Chocolate Fudge Cake One","With glaze - chocolatey",
         "https://s3-eu-west-1.amazonaws.com/s3.mediafileserver.co.uk/carnation/WebFiles/RecipeImages/carnationchocolatefudgecake_lg.jpg",
@@ -26,6 +26,12 @@ export class RecipeService
             new Ingredient("Bun",2),
             new Ingredient("Cheese",1),
             new Ingredient("Meat",1)
+        ]),
+        new Recipe("Strawberry Milkshake", "Fresh Strawberries",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR402MroNHvgdPmpkS68lRRK88EibMLypeUGzfUnpw__9bqm2Z5",
+        [
+            new Ingredient("Milk",1),
+            new Ingredient("Strawberry",2)
         ])
         ];
 

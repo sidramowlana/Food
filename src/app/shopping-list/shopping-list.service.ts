@@ -1,9 +1,9 @@
 import { Ingredient } from '../shared/ingredient.model';
-import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
 export class ShoppingListService{
 
-  updateIngredients = new EventEmitter<Ingredient[]>(); 
+  updateIngredients = new Subject<Ingredient[]>(); 
   
     private ingredients: Ingredient[] = [
         new Ingredient('chocolate', 2),
@@ -18,7 +18,8 @@ export class ShoppingListService{
 
       addIngredient(ingredient:Ingredient){
         this.ingredients.push(ingredient);
-        this.updateIngredients.emit(this.ingredients.slice());// since a coppy of the ingredients array is used u will also update that copy array.
+        // this.updateIngredients.emit(this.ingredients.slice());// since a copy of the ingredients array is used u will also update that copy array.
+        this.updateIngredients.next(this.ingredients.slice());
       }
 
       //When Shopping service is directly used in recipe-detail-component
@@ -41,6 +42,6 @@ export class ShoppingListService{
         //can push the ingredients as a list of single ingredient
         //inside the ingredients array the elements of Ingredient[] is pushed as single array lik a single element. 
         this.ingredients.push(...ingredient);
-        this.updateIngredients.emit(this.ingredients.slice());
+        this.updateIngredients.next(this.ingredients.slice());
       }
 }

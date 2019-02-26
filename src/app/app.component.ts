@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  selectedNaviagtion = 'recipe';
-  onNaviagte(feature:string)
-  {
-    this.selectedNaviagtion=feature;
-  }
+  // selectedNaviagtion = 'recipe';
+  // onNaviagte(feature:string)
+  // {
+  //   this.selectedNaviagtion=feature;
+  // }
 
 }
