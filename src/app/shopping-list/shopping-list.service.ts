@@ -1,10 +1,11 @@
-import { Ingredient } from '../shared/ingredient.model';
+  import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs';
 
 export class ShoppingListService{
 
   updateIngredients = new Subject<Ingredient[]>(); 
-  
+  startEditItem = new Subject<number>();
+
     private ingredients: Ingredient[] = [
         new Ingredient('chocolate', 2),
         new Ingredient('apples',10),
@@ -16,6 +17,10 @@ export class ShoppingListService{
         return this.ingredients.slice();
       }
 
+      getIngredient(index:number)
+      {
+        return this.ingredients[index];
+      }
       addIngredient(ingredient:Ingredient){
         this.ingredients.push(ingredient);
         // this.updateIngredients.emit(this.ingredients.slice());// since a copy of the ingredients array is used u will also update that copy array.
@@ -42,6 +47,17 @@ export class ShoppingListService{
         //can push the ingredients as a list of single ingredient
         //inside the ingredients array the elements of Ingredient[] is pushed as single array lik a single element. 
         this.ingredients.push(...ingredient);
+        this.updateIngredients.next(this.ingredients.slice());
+      }
+
+      updateIngredient(index:number, newIngredient:Ingredient)
+      {
+        this.ingredients[index] = newIngredient;
+        this.updateIngredients.next(this.ingredients.slice());
+      }
+      
+      deleteIngredient(index:number){
+        this.ingredients.splice(index,1);
         this.updateIngredients.next(this.ingredients.slice());
       }
 }
