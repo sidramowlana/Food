@@ -5,13 +5,13 @@
     routerLinkActive="active">
 <!-- (click)= "onSelect()"> -->
         <div class="pull-left">
-            <h4 class="list-group-item-heading">{{recipeElement.name}}</h4>
-            <p class="list-group-item-text">{{recipeElement.description}}</p>
+            <h4 class="list-group-item-heading">{{recipeElement.recipeName}}</h4>
+            <p class="list-group-item-text">{{recipeElement.recipeDescription}}</p>
         </div>
         <span class="pull-right">
             <img                     
-                [src]="recipeElement.imagePath"
-                alt="{{recipeElement.name}}" 
+                [src]="recipeElement.recipeImagePath"
+                alt="{{recipeElement.recipeName}}" 
                 class="img-responsive" 
                 style="max-height: 50px;">
         </span>               

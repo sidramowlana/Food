@@ -57,9 +57,9 @@ export class RecipeEditComponent implements OnInit {
     {
       //getting the default value for the edit recipe
       const recipe = this.recipeService.getRecipe(this.id);
-      name = recipe.name;
-      imagePath = recipe.imagePath;
-      description = recipe.description;
+      name = recipe.recipeName;
+      imagePath = recipe.recipeImagePath;
+      description = recipe.recipeDescription;
       if(recipe['ingredients']) //checks if the recipe has ingredients or whether it has nothing
       {
         for(let ingredient of recipe.ingredients)
