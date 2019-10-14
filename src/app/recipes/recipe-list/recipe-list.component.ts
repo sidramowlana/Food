@@ -20,6 +20,11 @@ export class RecipeListComponent implements OnInit {
               private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
+    this.recipeService.recipeChanged.subscribe(
+      (recipes:Recipe[])=>
+    {
+      this.recipes = recipes;
+    });
     this.recipes = this.recipeService.getRecipes();
   }
 
@@ -30,6 +35,6 @@ export class RecipeListComponent implements OnInit {
   
   onNewRecipe()
   {
-    this.router.navigate(['new-recipe'],{relativeTo:this.activatedRoute});
+    this.router.navigate(['new'],{relativeTo:this.activatedRoute}); // navigates to the recipe edit page
   }
 }

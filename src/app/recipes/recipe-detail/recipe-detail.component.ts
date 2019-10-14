@@ -26,6 +26,8 @@ export class RecipeDetailComponent implements OnInit {
       (params:Params)=>
       {
         this.recipeSelected = this.recipeService.getRecipe(+params['id']);
+        console.log(this.recipeSelected.ingredients);
+        
       }
     );
     
