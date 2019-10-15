@@ -12,6 +12,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class RecipeDetailComponent implements OnInit {
 
   @Input() recipeSelected:Recipe;
+  id:number;
   //When using directly with ShoppingListService
   // constructor(private shoppingListService:ShoppingListService) { }
 
@@ -21,13 +22,12 @@ export class RecipeDetailComponent implements OnInit {
               private router:Router){}
 
   ngOnInit() {
-
     this.activatedRoute.params.subscribe(
       (params:Params)=>
       {
-        this.recipeSelected = this.recipeService.getRecipe(+params['id']);
-        console.log(this.recipeSelected.ingredients);
-        
+        this.id = +params['id'];
+        this.recipeSelected = this.recipeService.getRecipe(this.id);
+        console.log(this.recipeSelected.ingredients);        
       }
     );
     
@@ -49,6 +49,6 @@ export class RecipeDetailComponent implements OnInit {
 
   onDeleteRecipe()
   {
-    
+    this.recipeService.deleteRecipe(this.id);
   }
 }
