@@ -11,7 +11,10 @@ export class ShoppingListService{
         new Ingredient('apples',10),
         new Ingredient('oranges',5)
       ];
-    
+      setIngredients(ingredients:Ingredient[]){
+        this.ingredients = ingredients;
+        this.updateIngredients.next(ingredients);
+      }
       getIngredients()
       {
         return this.ingredients.slice();

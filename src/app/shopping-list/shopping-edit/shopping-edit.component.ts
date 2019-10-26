@@ -3,6 +3,9 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { StoreDataService } from 'src/app/shared/storeData.service';
+
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -21,9 +24,11 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('form') formRef: NgForm;
   // @ViewChild('nameInput') nameInputRef :ElementRef;
   // @ViewChild('amountInput') amountInputRef :ElementRef;  
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor(private shoppingListService: ShoppingListService,
+    private storeDataService:StoreDataService) { }
 
   ngOnInit() {
+    
     this.subscription = this.shoppingListService.startEditItem.subscribe((index: number) => {
       this.editItemIndex = index;
       this.editMode = true;
@@ -67,5 +72,18 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onSave(){
+    this.storeDataService.saveShoppingList().subscribe(
+      (response:Response)=>
+        {
+            console.log(response);
+            
+        });
+    
+  }
+  onFetch(){
+    this.storeDataService.fetchShoppingList();
   }
 }
