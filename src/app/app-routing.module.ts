@@ -8,29 +8,35 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
 
-const appRoutes : Routes = 
-[
-    {path:'', redirectTo:'/recipes', pathMatch:'full'},
-    {path:'recipes', component:RecipesComponent,children:
+const appRoutes: Routes =
     [
-        {path:'', component:RecipeStartComponent},
-        {path:'new', component:RecipeEditComponent},
-        {path:':id', component:RecipeDetailComponent},
-        {path:':id/edit', component:RecipeEditComponent}
-    ]
-},
-    {path:'shopping-list', component:ShoppingListComponent},
-    {path:'not-found', component:PageNotFoundComponent},
-    {path:'**', redirectTo:'/not-found'}];
+        { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+        {
+            path: 'recipes', component: RecipesComponent, children:
+                [
+                    { path: '', component: RecipeStartComponent },
+                    { path: 'new', component: RecipeEditComponent },
+                    { path: ':id', component: RecipeDetailComponent },
+                    { path: ':id/edit', component: RecipeEditComponent }
+                ]
+        },
+        { path: 'shopping-list', component: ShoppingListComponent },
+        // { path: 'not-found', component: PageNotFoundComponent },
+        // { path: '**', redirectTo: '/not-found' },
+        { path: 'signUp', component: SignUpComponent },
+        { path: 'signIn', component: SignInComponent },
+    ];
 
 @NgModule({
-    imports :[
+    imports: [
         RouterModule.forRoot(appRoutes)
     ],
-    exports:[RouterModule]
+    exports: [RouterModule]
 })
 
-export class AppRoutingModule{
+export class AppRoutingModule {
 
 }
