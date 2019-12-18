@@ -26,7 +26,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     ShoppingEditComponent,
     PageNotFoundComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
     DropdownDirective
   ],
   imports: [
